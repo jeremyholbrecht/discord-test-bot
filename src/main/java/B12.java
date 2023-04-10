@@ -12,6 +12,7 @@ import java.util.Objects;
 public class B12 extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
 
+        // add your token here
         JDA bot = JDABuilder.createDefault("token")
                 .setActivity(Activity.playing("Dragon Quest XI"))
                 .addEventListeners(new B12())
