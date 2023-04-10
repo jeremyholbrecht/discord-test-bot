@@ -16,8 +16,8 @@ public class B12 extends ListenerAdapter {
                 .setActivity(Activity.playing("Dragon Quest XI"))
                 .addEventListeners(new B12())
                 .build();
-
     }
+
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
@@ -27,10 +27,10 @@ public class B12 extends ListenerAdapter {
                 // pings author
                 String userName = event.getAuthor().getAsMention();
                 event.getTextChannel().sendMessage(userName + ":said potato").queue();
-
             }
         }
     }
+
 
     @Override
     public void onMessageReactionAdd(@NotNull MessageReactionAddEvent event) {
@@ -39,6 +39,7 @@ public class B12 extends ListenerAdapter {
             String userName = Objects.requireNonNull(event.getUser()).getAsMention();
             event.getTextChannel().sendMessage( userName + "don't laugh!").queue();
         }
-
     }
+
+
 }
