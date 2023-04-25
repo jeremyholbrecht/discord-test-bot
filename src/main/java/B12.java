@@ -7,13 +7,15 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 import java.util.Objects;
+import java.util.Random;
 
 public class B12 extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
 
         // add your token here
-        JDA bot = JDABuilder.createDefault("token")
+        JDA bot = JDABuilder.createDefault("MTA5NDcxMzc2NDM0OTIxODg1Ng.GQz7oD.hgYfn6ThpntpwM-ADCvwmnYiaSFNg6SGC6Me7Y")
                 .setActivity(Activity.playing("Dragon Quest XI"))
                 .addEventListeners(new B12())
                 .build();
@@ -24,10 +26,14 @@ public class B12 extends ListenerAdapter {
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         if (!event.getAuthor().isBot()){
             String messageSent = event.getMessage().getContentRaw();
-            if (messageSent.equals("!potato")){
+            if (messageSent.equals("!veigar")){
                 // pings author
                 String userName = event.getAuthor().getAsMention();
-                event.getTextChannel().sendMessage(userName + ":said potato").queue();
+                Random rand = new Random();
+                int imageNumber = rand.nextInt(5);
+                // no need for BufferedImage cause discord just asks for a filepath and will look at the extension
+                File file = new File("C:\\Users\\jere\\Documents\\Veigar\\" + imageNumber +".jpg");
+                event.getTextChannel().sendMessage(userName).addFile(file).queue();
             }
         }
     }
@@ -41,6 +47,5 @@ public class B12 extends ListenerAdapter {
             event.getTextChannel().sendMessage( userName + "don't laugh!").queue();
         }
     }
-
 
 }
